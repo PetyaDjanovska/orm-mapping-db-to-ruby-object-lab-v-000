@@ -27,6 +27,11 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE students.name = ? LIMIT 1
     SQL
+
+    row = DB[:conn].execute(sql, name)
+    Student.new_from_db(row)
+  end
+
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade)
