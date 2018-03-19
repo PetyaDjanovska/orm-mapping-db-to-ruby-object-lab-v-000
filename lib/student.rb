@@ -24,9 +24,9 @@ class Student
   def self.find_by_name(name)
     # find the student in the database given a name
     # return a new instance of the Student class
-
-  end
-
+    sql = <<-SQL
+    SELECT * FROM students WHERE students.name = ? LIMIT 1
+    SQL
   def save
     sql = <<-SQL
       INSERT INTO students (name, grade)
